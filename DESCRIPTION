@@ -22,3 +22,5 @@ Imports:
     uwot
 Suggests: 
     SPARK
+URL: https://github.com/misratasci/DOST
+BugReports: https://github.com/misratasci/DOST/issues
