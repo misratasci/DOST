@@ -21,6 +21,10 @@ Imports:
     scuttle,
     uwot
 Suggests: 
-    SPARK
+    knitr,
+    rmarkdown,
+    SPARK,
+    Seurat
 URL: https://github.com/misratasci/DOST
 BugReports: https://github.com/misratasci/DOST/issues
+VignetteBuilder: knitr
