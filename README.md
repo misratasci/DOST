@@ -8,7 +8,7 @@ spots into a low-dimensional space using a Sammon mapping inspired loss
 function that jointly preserves gene expression similarity and spatial
 smoothness.
 
-<embed src="man/figures/overview.pdf" style="width:100.0%" />
+<img src="man/figures/overview.png" style="width:100.0%" />
 
 ## Installation
 
