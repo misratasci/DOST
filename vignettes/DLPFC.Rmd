@@ -25,9 +25,9 @@ To ensure our results match the manuscript exactly, we use the specific version 
 
 Please follow these steps to prepare the data:
 
-1.  **Download:** Go to the [Zenodo Repository](https://zenodo.org/records/10698880) and download the **DLPFC12.zip** file.
-2.  **Extract:** Unzip the file. You will see a folder structure where each slice (e.g., `151673`) has its own subfolder containing the `.h5` matrix and a `gt/` folder with ground truth annotations.
-3.  **Locate:** Note the path to the parent folder containing these slice subfolders. We will refer to this as `dir.input` in the code below.
+1. Go to the [Zenodo Repository](https://zenodo.org/records/10698880) and download the **DLPFC12.zip** file.
+2. Unzip the file.
+3. Note the path to the parent folder called "DLPFC12". We will refer to this as `dir.input` in the code below.
 
 ## 2. Define Helper Functions
 
@@ -84,12 +84,12 @@ load_DLPFC_sample <- function(slice.id, dir.input) {
 
 Now we load sample **151673**.
 
-*Note: In the code below, replace `"path/to/DLPFC"` with the actual path where you unzipped the data.*
+*Note: In the code below, replace `"path/to/DLPFC12"` with the actual path where you unzipped the data.*
 
 ```{r load_data, eval=FALSE}
 # Set this to the folder where you unzipped DLPFC12.zip
-# e.g., "~/Downloads/DLPFC"
-dir.input <- "path/to/DLPFC" 
+# e.g., "~/Downloads/DLPFC12"
+dir.input <- "path/to/DLPFC12" 
 slice_id <- "151673"
 
 # Load the sample using the helper function
@@ -130,7 +130,8 @@ We can visualize the resulting spatial domains and the UMAP representation of th
 ```{r visualize domains, eval=FALSE}
 # Visualize Spatial Domains
 sample@meta.data[["DOST"]] <- results$labels
-p1 <- Seurat::SpatialDimPlot(sample, group.by = "DOST", pt.size.factor = 2.5) + Seurat::NoLegend()
+p1 <- Seurat::SpatialDimPlot(sample, group.by = "DOST", pt.size.factor = 2.5) +
+  Seurat::NoLegend()
 print(p1)
 ```
 ![](dost_spatial.png){width=60%}
@@ -151,9 +152,7 @@ print(p2)
 Since we have the ground truth annotations for this dataset, we can easily calculate the Adjusted Rand Index (ARI) to quantify performance.
 
 ```{r validation, eval=FALSE}
-ari_score <- mclust::adjustedRandIndex(
-  results$labels, gt
-)
+ari_score <- mclust::adjustedRandIndex(results$labels, gt)
 
 cat(paste("Adjusted Rand Index (ARI):", round(ari_score, 3)))
 
