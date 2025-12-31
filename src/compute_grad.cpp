@@ -9,7 +9,6 @@ using namespace Rcpp;
 //' @param b Numeric Matrix
 //' @param eps Double
 //' @return Gradient matrix
-// [[Rcpp::export]]
 NumericMatrix compute_grad(const NumericMatrix& X,
                           const NumericMatrix& D_x,
                           const NumericMatrix& a,
