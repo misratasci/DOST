@@ -23,7 +23,7 @@ devtools::install_github("misratasci/DOST")
 
 For a full reproduction of the spatial domain identification of the
 DLPFC dataset from our paper, please see the [DLPFC
-Vignette](vignettes/DLPFC.Rmd).
+Vignette](https://misratasci.github.io/DOST/articles/DLPFC.html).
 
 # Package index
 
@@ -31,8 +31,9 @@ Vignette](vignettes/DLPFC.Rmd).
 
 - [`DOST()`](DOST.md) : DOST: Distance-preserving Optimization for
   Spatial Transcriptomics
-- [`compute_grad()`](compute_grad.md) : Compute Gradient (Internal C++
-  function)
+- [`plot_DOST_spatial()`](plot_DOST_spatial.md) : Plot DOST Spatial
+  Clusters
+- [`plot_DOST_umap()`](plot_DOST_umap.md) : Plot DOST Embedding (UMAP)
 
 # Articles
 

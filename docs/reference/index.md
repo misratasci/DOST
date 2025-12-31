@@ -4,5 +4,6 @@
 
 - [`DOST()`](DOST.md) : DOST: Distance-preserving Optimization for
   Spatial Transcriptomics
-- [`compute_grad()`](compute_grad.md) : Compute Gradient (Internal C++
-  function)
+- [`plot_DOST_spatial()`](plot_DOST_spatial.md) : Plot DOST Spatial
+  Clusters
+- [`plot_DOST_umap()`](plot_DOST_umap.md) : Plot DOST Embedding (UMAP)
