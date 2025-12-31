@@ -6,7 +6,7 @@ Authors@R: c(
     person("Mehmet", "Gönen", , "mehmetgonen@ku.edu.tr", role = c("aut", "cre"))
     )
 Description: DOST is a distance-preserving optimization based method that clusters spatial transcriptomics (ST) spots into spatial domains. DOST embeds ST spots into a low-dimensional space using a Sammon mapping inspired loss function that jointly preserves gene expression similarity and spatial smoothness.
-License: use_mit_license()
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
