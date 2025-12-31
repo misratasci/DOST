@@ -1,0 +1,6 @@
+pandoc: '3.2'
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  DLPFC: DLPFC.html
+last_built: 2025-12-31T12:06Z
