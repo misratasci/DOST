@@ -1,9 +1,10 @@
 Package: DOST
 Title: Distance-preserving Optimiaztion for Spatial Transcriptomics
 Version: 0.0.0.9000
-Authors@R: 
-    person("Mısra", "Taşçı", , "mtasci18@ku.edu.tr", role = c("aut", "cre"))
+Authors@R: c(
+    person("Mısra", "Taşçı", , "mtasci18@ku.edu.tr", role = c("aut", "cre")),
     person("Mehmet", "Gönen", , "mehmetgonen@ku.edu.tr", role = c("aut", "cre"))
+    )
 Description: DOST is a distance-preserving optimization based method that clusters spatial transcriptomics (ST) spots into spatial domains. DOST embeds ST spots into a low-dimensional space using a Sammon mapping inspired loss function that jointly preserves gene expression similarity and spatial smoothness.
 License: use_mit_license()
 Encoding: UTF-8
