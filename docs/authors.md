@@ -2,7 +2,7 @@
 
 ## Authors
 
-- **Mısra Taşçı**. Author, maintainer.
+- **Mısra Taşçı**. Author.
 
 - **Mehmet Gönen**. Author, maintainer.
 
@@ -11,14 +11,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/misratasci/DOST/blob/HEAD/DESCRIPTION)
 
-Taşçı M, Gönen M (2025). *DOST: Distance-preserving Optimiaztion for
+Taşçı M, Gönen M (2026). *DOST: Distance-preserving Optimiaztion for
 Spatial Transcriptomics*. R package version 0.0.0.9000,
 <https://github.com/misratasci/DOST>.
 
     @Manual{,
       title = {DOST: Distance-preserving Optimiaztion for Spatial Transcriptomics},
       author = {Mısra Taşçı and Mehmet Gönen},
-      year = {2025},
+      year = {2026},
       note = {R package version 0.0.0.9000},
       url = {https://github.com/misratasci/DOST},
     }
