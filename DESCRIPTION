@@ -20,6 +20,8 @@ Imports:
     RSpectra,
     scran,
     scuttle,
+    stats,
+    utils,
     uwot
 Suggests: 
     knitr,
@@ -29,5 +31,5 @@ Suggests:
 URL: https://github.com/misratasci/DOST, https://misratasci.github.io/DOST/
 BugReports: https://github.com/misratasci/DOST/issues
 VignetteBuilder: knitr
-Remotes:  
+Remotes: 
     xzhoulab/SPARK
