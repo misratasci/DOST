@@ -13,7 +13,7 @@ DOST(
   nGenes = 3000,
   neighborhood_threshold = 1,
   embedding_dim = 20,
-  lambda = 0.025,
+  lambda = 0.03,
   lr = 16,
   max_iterations = 20,
   refinement = TRUE,

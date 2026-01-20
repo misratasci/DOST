@@ -6,8 +6,8 @@ This vignette demonstrates how to reproduce the DLPFC results presented
 in our article using the `DOST` package.
 
 To ensure our results match the manuscript exactly, we use the specific
-version of the DLPFC dataset provided by the [Benchmark ST
-Reproducibility](https://benchmarkst-reproducibility.readthedocs.io/en/latest/Data%20availability.html)
+version of the DLPFC dataset provided by the [Benchmark
+ST](https://benchmarkst-reproducibility.readthedocs.io/en/latest/Data%20availability.html)
 study.
 
 ## 1. Data Preparation
