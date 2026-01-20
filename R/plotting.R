@@ -1,3 +1,6 @@
+
+utils::globalVariables(c("x", "y", "cluster", "UMAP1", "UMAP2"))
+
 #' Plot DOST Spatial Clusters
 #'
 #' Visualizes the clustering results in spatial coordinates.
