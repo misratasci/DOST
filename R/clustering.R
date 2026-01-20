@@ -1,10 +1,13 @@
 
 cluster_embedding <- function(Z, R, modelName = "EEE") {
   cat("\nClustering...\n")
-  mclust_c <- mclust::Mclust(data = Z, G = R, modelNames = modelName, verbose = FALSE, subset = Inf)
+  all_indices <- 1:nrow(Z)
+  mclust_c <- mclust::Mclust(data = Z, G = R, modelNames = modelName, verbose = FALSE,
+                             initialization = list(subset = all_indices))
   if (is.null(mclust_c)) {
     cat("Mclust failed, retrying with different model families...\n")
-    mclust_c <- mclust::Mclust(data = Z, G = R, verbose = FALSE, subset = Inf)
+    mclust_c <- mclust::Mclust(data = Z, G = R, verbose = FALSE,
+                               initialization = list(subset = all_indices))
   }
   if (is.null(mclust_c)) {
     cat("Mclust failed\n")

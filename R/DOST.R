@@ -167,7 +167,7 @@ optimize <- function(Z, D_expr, V, lambda, lr = 16, eps = 1e-20, max_iterations 
 #' @export
 DOST <- function(X, coords, R, selected_genes = "HVG",
                  nGenes = 3000, neighborhood_threshold = 1, embedding_dim = 20,
-                 lambda = 0.025, lr = 16, max_iterations = 20,
+                 lambda = 0.03, lr = 16, max_iterations = 20,
                  refinement = TRUE, refine_k = 30) {
   cat("Preprocessing data...\n")
   processed <- preprocess(X, coords, selected_genes, nGenes, neighborhood_threshold)
@@ -178,7 +178,6 @@ DOST <- function(X, coords, R, selected_genes = "HVG",
   results <- optimize(Z_init, D_expr, V, lambda, lr = lr, eps = 1e-20,
                       max_iterations = max_iterations, loss_tol = 1e-5)
   Z <- results$Z
-  #Z <- scale(Z)
   losses <- results$losses
   max_mclust_c <- cluster_embedding(Z, R, modelName = "EEE")
   if (is.null(max_mclust_c)) {
