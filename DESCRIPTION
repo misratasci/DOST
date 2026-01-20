@@ -26,6 +26,6 @@ Suggests:
     rmarkdown,
     SPARK,
     Seurat
-URL: https://github.com/misratasci/DOST
+URL: https://github.com/misratasci/DOST, https://misratasci.github.io/DOST/
 BugReports: https://github.com/misratasci/DOST/issues
 VignetteBuilder: knitr
