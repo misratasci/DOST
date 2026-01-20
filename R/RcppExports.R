@@ -9,6 +9,7 @@
 #' @param b Numeric Matrix
 #' @param eps Double
 #' @return Gradient matrix
+#' @noRd
 compute_grad <- function(X, D_x, a, b, eps = 1e-20) {
     .Call(`_DOST_compute_grad`, X, D_x, a, b, eps)
 }
