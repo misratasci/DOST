@@ -1,5 +1,5 @@
 Package: DOST
-Title: Distance-preserving Optimiaztion for Spatial Transcriptomics
+Title: Distance-preserving Optimization for Spatial Transcriptomics
 Version: 0.0.0.9000
 Authors@R: c(
     person("Mısra", "Taşçı", , "mtasci18@ku.edu.tr", role = c("aut", "cre")),
