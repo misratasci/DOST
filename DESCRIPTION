@@ -24,8 +24,10 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    SPARK,
-    Seurat
+    Seurat,
+    SPARK (>= 1.1.1)
 URL: https://github.com/misratasci/DOST, https://misratasci.github.io/DOST/
 BugReports: https://github.com/misratasci/DOST/issues
 VignetteBuilder: knitr
+Remotes:  
+    xzhoulab/SPARK
