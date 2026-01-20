@@ -1,0 +1,44 @@
+# DOST: Distance-preserving Optimization for Spatial Transcriptomics
+
+**DOST** is an R package for identifying spatial domains in spatial
+transcriptomics (ST) data. It is a distance-preserving optimization
+based method that clusters ST spots into spatial domains. DOST embeds ST
+spots into a low-dimensional space using a Sammon mapping inspired loss
+function that jointly preserves gene expression similarity and spatial
+smoothness.
+
+![](reference/figures/overview.png)
+
+## Installation
+
+You can install the development version of DOST from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("misratasci/DOST")
+```
+
+## Documentation & Tutorials
+
+For a full reproduction of the spatial domain identification of the
+DLPFC dataset from our paper, please see the [DLPFC
+Vignette](https://misratasci.github.io/DOST/articles/DLPFC.html).
+
+# Package index
+
+## All functions
+
+- [`DOST()`](https://misratasci.github.io/DOST/reference/DOST.md) :
+  DOST: Distance-preserving Optimization for Spatial Transcriptomics
+- [`plot_DOST_spatial()`](https://misratasci.github.io/DOST/reference/plot_DOST_spatial.md)
+  : Plot DOST Spatial Clusters
+- [`plot_DOST_umap()`](https://misratasci.github.io/DOST/reference/plot_DOST_umap.md)
+  : Plot DOST Embedding (UMAP)
+
+# Articles
+
+### All vignettes
+
+- [Reproducing Spatial Domain Identification of DLPFC with
+  DOST](https://misratasci.github.io/DOST/articles/DLPFC.md):
