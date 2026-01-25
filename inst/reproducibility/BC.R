@@ -36,7 +36,7 @@ X <- Seurat::GetAssayData(sample, layer = "counts")
 coords <- Seurat::GetTissueCoordinates(sample, scale = 'hires')[1:2]
 
 # Run DOST
-results <- DOST(X, coords, R, lambda = 0.03, lr = 16, refinement = FALSE)
+results <- DOST(X, coords, R, refinement = FALSE)
 
 # Plot results
 plot_DOST_spatial(coords, results$labels)
