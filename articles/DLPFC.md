@@ -123,14 +123,16 @@ We can visualize the resulting spatial domains and the UMAP
 representation of the low dimensional DOST embedding.
 
 ``` r
-# Visualize Spatial Domains
+# Visualize Spatial Domains with ground truth
+p1 <- Seurat::SpatialDimPlot(sample, group.by = "layers", pt.size.factor = 2.5) +
+  Seurat::NoLegend() + ggtitle("Ground Truth")
 sample@meta.data[["DOST"]] <- results$labels
-p1 <- Seurat::SpatialDimPlot(sample, group.by = "DOST", pt.size.factor = 2.5) +
-  Seurat::NoLegend()
-print(p1)
+p2 <- Seurat::SpatialDimPlot(sample, group.by = "DOST", pt.size.factor = 2.5) +
+  Seurat::NoLegend() + ggtitle("DOST Domains")
+print(p1 + p2)
 ```
 
-![](dost_spatial.png)
+![](gt_dost.png)
 
 ``` r
 # Visualize UMAP with ground truth labels
