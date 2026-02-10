@@ -12,7 +12,7 @@ smoothness.
 
 ## Installation
 
-You can install the development version of DOST from
+You can install DOST from
 [GitHub](https://github.com/) with:
 
 ``` r
