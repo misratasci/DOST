@@ -14,6 +14,7 @@ smoothness.
 You can install DOST from [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("misratasci/DOST")
 ```
@@ -23,3 +24,8 @@ devtools::install_github("misratasci/DOST")
 For a full reproduction of the spatial domain identification of the
 DLPFC dataset from our paper, please see the [DLPFC
 Vignette](https://misratasci.github.io/DOST/articles/DLPFC.html).
+
+## Contact
+
+For any questions: - Mısra Taşçı: <mtasci18@ku.edu.tr> - Mehmet Gönen:
+<mehmetgonen@ku.edu.tr>

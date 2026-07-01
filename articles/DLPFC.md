@@ -27,6 +27,7 @@ structure of this benchmark dataset and attach the ground truth layer
 annotations (L1-L6, WM) to the Seurat object.
 
 ``` r
+
 library(DOST)
 library(Seurat)
 library(ggplot2)
@@ -80,6 +81,7 @@ Now we load sample **151673**.
 path where you unzipped the data.*
 
 ``` r
+
 # Set this to the folder where you unzipped DLPFC12.zip
 # e.g., "~/Downloads/DLPFC12"
 dir.input <- "path/to/DLPFC12" 
@@ -108,6 +110,7 @@ data:
   cortex.
 
 ``` r
+
 results <- DOST(
   X = X, 
   coords = coords, 
@@ -123,6 +126,7 @@ We can visualize the resulting spatial domains and the UMAP
 representation of the low dimensional DOST embedding.
 
 ``` r
+
 # Visualize Spatial Domains with ground truth
 p1 <- Seurat::SpatialDimPlot(sample, group.by = "layers", pt.size.factor = 2.5) +
   Seurat::NoLegend() + ggtitle("Ground Truth")
@@ -135,6 +139,7 @@ print(p1 + p2)
 ![](gt_dost.png)
 
 ``` r
+
 # Visualize UMAP with ground truth labels
 p2 <- plot_DOST_umap(
   Z = results$Z, 
@@ -151,6 +156,7 @@ Since we have the ground truth annotations for this dataset, we can
 easily calculate the Adjusted Rand Index (ARI) to quantify performance.
 
 ``` r
+
 ari_score <- mclust::adjustedRandIndex(results$labels, gt)
 
 cat(paste("Adjusted Rand Index (ARI):", round(ari_score, 3)))
@@ -165,6 +171,7 @@ ensure the algorithm has converged. The `losses` element in the results
 list tracks the objective function value at each iteration.
 
 ``` r
+
 # Create a sequence for iterations starting at 0
 iterations <- 0:(length(results$losses) - 1)
 
