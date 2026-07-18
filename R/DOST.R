@@ -68,7 +68,7 @@ optimize <- function(Z, D_expr, V, lambda, lr = 16, eps = 1e-20, max_iterations 
       if (modified_loss <= best_loss) {
         if (log2(coef) < 0) {
           best_loss <- modified_loss
-          Z <- new_Z #fix: was best_Z
+          Z <- new_Z
           break
         }
         else {
