@@ -1,0 +1,25 @@
+#   conda env create -f environment.yml
+#   conda activate graphst
+
+name: graphst
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas<2.0.0
+  - scipy<1.14
+  - scikit-learn=1.1.1
+  - scikit-misc
+  - tqdm=4.64.0
+  - matplotlib<3.7
+  - openpyxl
+  - scanpy=1.9.1
+  - anndata=0.8.0
+  - pot
+  - rpy2>=3.4,<3.6
+  - r-base>=4.0
+  - r-mclust
+  - pytorch
