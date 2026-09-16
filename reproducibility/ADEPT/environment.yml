@@ -1,0 +1,21 @@
+#   conda env create -f environment.yml
+#   conda activate adept
+
+name: adept
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - scanpy=1.9.1 
+  - seaborn
+  - openpyxl
+  - rpy2
+  - r-base
+  - r-mclust
+  - pytorch
+  - pytorch_geometric=2.5.1 
+  - pytorch_sparse
+  - matplotlib<3.7
+  - pandas<2.0.0
