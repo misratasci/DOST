@@ -1,0 +1,17 @@
+#   conda env create -f environment.yml
+#   conda activate spagcn
+
+name: spagcn
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - scanpy
+  - numba
+  - statsmodels
+  - louvain
+  - opencv
+  - openpyxl
+  - pytorch
