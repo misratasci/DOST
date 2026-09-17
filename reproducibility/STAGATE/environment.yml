@@ -1,0 +1,20 @@
+#   conda env create -f environment.yml
+#   conda activate stagate
+
+name: stagate
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - scanpy
+  - seaborn
+  - scikit-misc
+  - openpyxl
+  - rpy2<3.5.0
+  - r-base
+  - r-mclust
+  - pytorch
+  - pytorch_geometric
+  - pytorch_sparse
