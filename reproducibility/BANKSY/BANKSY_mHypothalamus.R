@@ -20,10 +20,10 @@ library(Banksy)
 
 # ---------------------------------------------------------------------------
 # Change this path to where you downloaded and unzipped the data
-dir.input <- "/Users/misratasci/Desktop/ST-research/data/mHypothalamus"  #"path/to/data/mHypothalamus"
+dir.input <- "path/to/data/mHypothalamus"
 
 # Change this path to where you want to save the results
-dir.output <- "output" #"path/to/output/"
+dir.output <- "path/to/output/"
 # ---------------------------------------------------------------------------
 
 filename <- file.path(dir.input, "MERFISH_Animal1_cnts.xlsx")
@@ -38,7 +38,6 @@ k_geom <- c(15, 30)
 
 dir.create(dir.output, showWarnings = FALSE, recursive = TRUE)
 
-results <- list()
 banksy_aris <- c()
 
 for (sheet in sheets) {
@@ -115,4 +114,4 @@ for (sheet in sheets) {
 
 }
 
-save(results, banksy_aris, file = file.path(dir.output, "mHypothalamus_BANKSY_aris.RData"))
+save(banksy_aris, file = file.path(dir.output, "mHypothalamus_BANKSY_aris.RData"))

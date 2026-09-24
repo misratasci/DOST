@@ -21,7 +21,7 @@ environment.yml          conda environment
 
 ## Data
 
-We used the data links provided by the Benchmark ST study:
+We used the data links provided by the BenchmarkST study:
 <https://benchmarkst-reproducibility.readthedocs.io/en/latest/Data%20availability.html>
 
 | Dataset | Zenodo | Sections | Domains |

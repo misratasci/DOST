@@ -43,9 +43,7 @@ R <- 20
 
 BASS <- createBASSObject(cnts, xym, C = C, R = R)
 listAllHyper(BASS)
-BASS <- BASS.preprocess(BASS,
-                        geneSelect = "sparkx" # or "hvgs"
-)
+BASS <- BASS.preprocess(BASS)
 BASS <- BASS.run(BASS)
 BASS <- BASS.postprocess(BASS)
 
