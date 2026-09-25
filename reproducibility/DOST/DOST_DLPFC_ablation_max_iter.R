@@ -20,7 +20,8 @@ dir.output <- "path/to/output"
 max_iter_grid <- seq(0, 60, by = 20)
 
 # Slice to run (1 to 12)
-slice_index <- 9
+# Slice 1 and 9 were run for the ablation study
+slice_index <- 1
 # ---------------------------------------------------------------------------
 
 # Slice IDs

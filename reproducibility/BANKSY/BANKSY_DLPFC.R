@@ -19,14 +19,14 @@ library(scuttle)
 library(scater)
 library(Seurat)
 library(hdf5r)
-source("load_data.R")
+source("reproducibility/BANKSY/load_data.R")
 
 # ---------------------------------------------------------------------------
 # Change this path to where you downloaded and unzipped the data
 dir.input <- "path/to/data/DLPFC12"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 
 # Slice indices to run (1 to 12). Leave as 1:12 to produce the full banksy_aris
 # vector the DLPFC figure expects.

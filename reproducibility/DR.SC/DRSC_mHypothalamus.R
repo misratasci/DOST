@@ -16,6 +16,7 @@
 #   mHypothalamus_DRSC_sheet_<sheet>_embeddings.RData   emb, the DR.SC embedding
 #   mHypothalamus_DRSC_aris.RData                drsc_aris, one ARI per sheet in the loop
 
+library(Seurat)
 library(DR.SC)
 
 # ---------------------------------------------------------------------------
@@ -23,7 +24,7 @@ library(DR.SC)
 dir.input <- "path/to/data/mHypothalamus"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 # ---------------------------------------------------------------------------
 
 filename <- file.path(dir.input, "MERFISH_Animal1_cnts.xlsx")

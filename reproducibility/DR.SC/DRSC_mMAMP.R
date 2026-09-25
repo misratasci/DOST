@@ -16,14 +16,14 @@
 
 library(Seurat)
 library(DR.SC)
-source("load_data.R")
+source("reproducibility/DR.SC/load_data.R")
 
 # ---------------------------------------------------------------------------
 # Change this path to where you downloaded and unzipped the data
 dir.input <- "path/to/data/mMAMP"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 # ---------------------------------------------------------------------------
 
 # Number of highly variable genes DR.SC is given

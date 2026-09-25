@@ -17,13 +17,19 @@
 #   mHypothalamus_BANKSY_aris.RData                banksy_aris, one ARI per sheet in the loop
 
 library(Banksy)
+library(SummarizedExperiment)
+library(SpatialExperiment)
+library(scuttle)
+library(scater)
+library(Seurat)
+library(hdf5r)
 
 # ---------------------------------------------------------------------------
 # Change this path to where you downloaded and unzipped the data
 dir.input <- "path/to/data/mHypothalamus"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 # ---------------------------------------------------------------------------
 
 filename <- file.path(dir.input, "MERFISH_Animal1_cnts.xlsx")

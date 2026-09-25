@@ -22,14 +22,14 @@ library(scuttle)
 library(scater)
 library(Seurat)
 library(hdf5r)
-source("load_data.R")
+source("reproducibility/BANKSY/load_data.R")
 
 # ---------------------------------------------------------------------------
 # Change this path to where you downloaded and unzipped the data
 dir.input <- "path/to/data/BC"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 # ---------------------------------------------------------------------------
 
 # BANKSY recommends the following hyperparameters for 10x Visium v1v2

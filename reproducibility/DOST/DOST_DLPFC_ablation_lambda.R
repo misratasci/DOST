@@ -20,6 +20,7 @@ dir.output <- "path/to/output"
 lambdas <- seq(0, 0.09, by = 0.03)
 
 # Slices to run (1 to 12), one output file each
+# Slice 1 and 9 were run for the ablation study
 slice_indices <- c(1, 9)
 # ---------------------------------------------------------------------------
 

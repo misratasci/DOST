@@ -10,14 +10,14 @@
 
 library(Seurat)
 library(DR.SC)
-source("load_data.R")
+source("reproducibility/DR.SC/load_data.R")
 
 # ---------------------------------------------------------------------------
 # Change this path to where you downloaded and unzipped the data
 dir.input <- "path/to/data/DLPFC12"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 
 # Slice indices to time (1 to 12) and how many repeats per slice
 slice_indices <- 1:12

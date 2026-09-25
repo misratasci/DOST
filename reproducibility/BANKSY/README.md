@@ -62,6 +62,6 @@ Run install.R to install the packages the scripts need.
 | | `mMAMP_BANKSY_embeddings.RData` | `emb`, the the BANKSY embedding |
 | `BANKSY_mHypothalamus.R` | `mHypothalamus_BANKSY_sheet_<sheet>_labels.RData` | `labels` |
 | | `mHypothalamus_BANKSY_sheet_<sheet>_embeddings.RData` | `emb`, the BANKSY embedding |
-| | `mHypothalamus_BANKSY__aris.RData` | `banksy_aris`, one ARI per sheet in the loop |
+| | `mHypothalamus_BANKSY_aris.RData` | `banksy_aris`, one ARI per sheet in the loop |
 | `BANKSY_runtime.R` | `BANKSY_runtime<index>.txt` | one elapsed time per line, appended |
 

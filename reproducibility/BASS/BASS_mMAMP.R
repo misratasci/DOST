@@ -15,14 +15,14 @@
 
 library(Seurat)
 library(BASS)
-source("load_data.R")
+source("reproducibility/BASS/load_data.R")
 
 # ---------------------------------------------------------------------------
 # Change this path to where you downloaded and unzipped the data
 dir.input <- "path/to/data/mMAMP"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 # ---------------------------------------------------------------------------
 
 section <- "MA"

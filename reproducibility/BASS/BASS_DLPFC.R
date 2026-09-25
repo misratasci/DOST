@@ -11,14 +11,14 @@
 #   bass_aris.RData                   bass_aris, one ARI per slice covered by the loop
 
 library(BASS)
-source("load_data.R")
+source("reproducibility/BASS/load_data.R")
 
 # ---------------------------------------------------------------------------
 # Change this path to where you downloaded and unzipped the data
 dir.input <- "path/to/data/DLPFC12"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 
 # Slice indices to run (1 to 12). Set to a single index, e.g. 9, for one slice;
 # leave as 1:12 to produce the full bass_aris vector

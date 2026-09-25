@@ -27,7 +27,8 @@ dir.output <- "path/to/output"
 init_types <- c("random", "pca", "mds")
 
 # Slice to run (1 to 12)
-slice_index <- 9
+# Slice 1 and 9 were run for the ablation study
+slice_index <- 1
 # ---------------------------------------------------------------------------
 
 embedding_dim <- 20
@@ -81,7 +82,7 @@ for (init in init_types) {
     stop("unknown initialization: ", init)
   )
 
-  opt <- DOST:::optimize(Z_init, D_expr, V)
+  opt <- DOST:::optimize(Z_init, D_expr, V, lambda = 0.03)
   Z <- opt$Z
   losses <- opt$losses
 
