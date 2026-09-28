@@ -3,14 +3,37 @@
 
 #' Compute Gradient (Internal C++ function)
 #'
-#' @param X Numeric Matrix
-#' @param D_x Numeric Matrix
-#' @param a Numeric Matrix
-#' @param b Numeric Matrix
+#' @param X Numeric Matrix (N x K embedding)
+#' @param D_x Numeric Matrix (pairwise distances of X)
+#' @param D_expr Numeric Matrix (expression distances)
+#' @param V_p Integer Vector (column pointers of V)
+#' @param V_i Integer Vector (row indices of V)
+#' @param lambda Double
+#' @param sum_V Double
 #' @param eps Double
 #' @return Gradient matrix
 #' @noRd
-compute_grad <- function(X, D_x, a, b, eps = 1e-20) {
-    .Call(`_DOST_compute_grad`, X, D_x, a, b, eps)
+compute_grad <- function(X, D_x, D_expr, V_p, V_i, lambda, sum_V, eps = 1e-20) {
+    .Call(`_DOST_compute_grad`, X, D_x, D_expr, V_p, V_i, lambda, sum_V, eps)
+}
+
+loss_sums <- function(D_lab, D_expr, V_p, V_i, eps = 1e-20) {
+    .Call(`_DOST_loss_sums`, D_lab, D_expr, V_p, V_i, eps)
+}
+
+double_center <- function(x, rmean, cmean, gmean) {
+    .Call(`_DOST_double_center`, x, rmean, cmean, gmean)
+}
+
+dist_row_min <- function(d, n) {
+    .Call(`_DOST_dist_row_min`, d, n)
+}
+
+dist_adjacency <- function(d, n, threshold) {
+    .Call(`_DOST_dist_adjacency`, d, n, threshold)
+}
+
+knn_vote <- function(D, codes, nlevels, k) {
+    .Call(`_DOST_knn_vote`, D, codes, nlevels, k)
 }
 

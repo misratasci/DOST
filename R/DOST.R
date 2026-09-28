@@ -21,10 +21,9 @@ mycmdscale <- function (d, k) {
     stop(gettextf("invalid value of %s", "'n'"), domain = NA)
   if ((k <- as.integer(k)) > n - 1 || k < 1)
     stop("'k' must be in {1, 2, ..  n - 1}")
-  R = x*0 + rowMeans(x)
-  C = t(x*0 + colMeans(x))
-  x = x - R - C + mean(x[])
-  e <- RSpectra::eigs_sym(-x/2, k = k, which = "LM")
+  x <- double_center(x, rowMeans(x), colMeans(x), mean(x))
+  e <- RSpectra::eigs_sym(x, k = k, which = "LM")
+  rm(x)
   ev <- e$values
   evec <- e$vectors[, seq_len(k), drop = FALSE]
   k1 <- sum(ev > 0)
@@ -41,40 +40,45 @@ mycmdscale <- function (d, k) {
 
 compute_loss <- function(D_lab, D_expr, V, lambda, eps = 1e-20) {
   N <- nrow(D_lab)
-  L1 <- sum( (D_lab - D_expr)^2 / (D_expr + diag(eps, N, N)) ) / nrow(D_lab)^2
-  L2 <- sum(V * D_lab) / sum(V)
+  sums <- loss_sums(D_lab, D_expr, V$p, V$i, eps)
+  L1 <- sums[1] / N^2
+  L2 <- sums[2] / V$sum
   return (L1 + lambda * L2)
 }
 
+# V is the sparse adjacency returned by build_adj_mat()
 optimize <- function(Z, D_expr, V, lambda, lr = 16, eps = 1e-20, max_iterations = 20, loss_tol = 1e-5) {
   D_lab <- compute_D(Z)
   current_loss <- compute_loss(D_lab, D_expr, V, lambda, eps)
   losses <- c(current_loss)
   i <- 0
-  N <- nrow(D_lab)
-  grad_a <- 2 / (N^2 * D_expr)
-  grad_b <- ((lambda * V) / sum(V)) - (2 / N^2)
-  Zs <- list()
   while (i < max_iterations) {
     cat("\rOptimizing - Iteration:", i + 1, "of" , max_iterations, " Loss:", format(current_loss, digits = 6))
-    grad <- compute_grad(Z, D_lab, grad_a, grad_b, eps)
+    grad <- compute_grad(Z, D_lab, D_expr, V$p, V$i, lambda, V$sum, eps)
     coef <- 1
     best_loss <- current_loss
     best_Z <- Z
+    # keep the distance matrix of every candidate so it need not be recomputed
+    best_D_lab <- D_lab
+    D_lab <- NULL
+    new_D_lab <- NULL
     while (TRUE) {
       new_Z <- Z - coef * lr * grad
+      new_D_lab <- NULL
       new_D_lab <- compute_D(new_Z)
       modified_loss <- compute_loss(new_D_lab, D_expr, V, lambda, eps)
       if (modified_loss <= best_loss) {
         if (log2(coef) < 0) {
           best_loss <- modified_loss
           Z <- new_Z
+          D_lab <- new_D_lab
           break
         }
         else {
           coef <- coef * 2
           best_loss <- modified_loss
           best_Z <- new_Z
+          best_D_lab <- new_D_lab
         }
       }
       else {
@@ -84,12 +88,15 @@ optimize <- function(Z, D_expr, V, lambda, lr = 16, eps = 1e-20, max_iterations 
         else {
           coef <- coef / 2
           Z <- best_Z
+          D_lab <- best_D_lab
           break
         }
       }
     }
-    D_lab <- compute_D(Z)
-    new_loss <- compute_loss(D_lab, D_expr, V, lambda, eps)
+    best_D_lab <- NULL
+    new_D_lab <- NULL
+    # best_loss is the loss of the accepted Z
+    new_loss <- best_loss
     losses <- c(losses, new_loss)
     if ((current_loss - new_loss)/current_loss < loss_tol) {
       print("Loss improvement is too small, stopping optimization.")
@@ -97,9 +104,8 @@ optimize <- function(Z, D_expr, V, lambda, lr = 16, eps = 1e-20, max_iterations 
     }
     current_loss <- new_loss
     i <- i + 1
-    Zs[[i]] <- Z
   }
-  return(list(Zs = Zs, Z = Z, losses = losses))
+  return(list(Z = Z, losses = losses))
 }
 
 #' DOST: Distance-preserving Optimization for Spatial Transcriptomics
@@ -173,10 +179,12 @@ DOST <- function(X, coords, R, selected_genes = "HVG",
   processed <- preprocess(X, coords, selected_genes, nGenes, neighborhood_threshold)
   D_expr <- processed$D_expr
   V <- processed$V
+  rm(processed)
   cat("Initializing...\n")
   Z_init <- mycmdscale(D_expr, embedding_dim)
   results <- optimize(Z_init, D_expr, V, lambda, lr = lr, eps = 1e-20,
                       max_iterations = max_iterations, loss_tol = 1e-5)
+  rm(D_expr, V)
   Z <- results$Z
   losses <- results$losses
   max_mclust_c <- cluster_embedding(Z, R, modelName = "EEE")

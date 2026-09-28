@@ -11,23 +11,99 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // compute_grad
-NumericMatrix compute_grad(const NumericMatrix& X, const NumericMatrix& D_x, const NumericMatrix& a, const NumericMatrix& b, const double eps);
-RcppExport SEXP _DOST_compute_grad(SEXP XSEXP, SEXP D_xSEXP, SEXP aSEXP, SEXP bSEXP, SEXP epsSEXP) {
+NumericMatrix compute_grad(const NumericMatrix& X, const NumericMatrix& D_x, const NumericMatrix& D_expr, const IntegerVector& V_p, const IntegerVector& V_i, const double lambda, const double sum_V, const double eps);
+RcppExport SEXP _DOST_compute_grad(SEXP XSEXP, SEXP D_xSEXP, SEXP D_exprSEXP, SEXP V_pSEXP, SEXP V_iSEXP, SEXP lambdaSEXP, SEXP sum_VSEXP, SEXP epsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const NumericMatrix& >::type X(XSEXP);
     Rcpp::traits::input_parameter< const NumericMatrix& >::type D_x(D_xSEXP);
-    Rcpp::traits::input_parameter< const NumericMatrix& >::type a(aSEXP);
-    Rcpp::traits::input_parameter< const NumericMatrix& >::type b(bSEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type D_expr(D_exprSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type V_p(V_pSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type V_i(V_iSEXP);
+    Rcpp::traits::input_parameter< const double >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< const double >::type sum_V(sum_VSEXP);
     Rcpp::traits::input_parameter< const double >::type eps(epsSEXP);
-    rcpp_result_gen = Rcpp::wrap(compute_grad(X, D_x, a, b, eps));
+    rcpp_result_gen = Rcpp::wrap(compute_grad(X, D_x, D_expr, V_p, V_i, lambda, sum_V, eps));
+    return rcpp_result_gen;
+END_RCPP
+}
+// loss_sums
+NumericVector loss_sums(const NumericMatrix& D_lab, const NumericMatrix& D_expr, const IntegerVector& V_p, const IntegerVector& V_i, const double eps);
+RcppExport SEXP _DOST_loss_sums(SEXP D_labSEXP, SEXP D_exprSEXP, SEXP V_pSEXP, SEXP V_iSEXP, SEXP epsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type D_lab(D_labSEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type D_expr(D_exprSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type V_p(V_pSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type V_i(V_iSEXP);
+    Rcpp::traits::input_parameter< const double >::type eps(epsSEXP);
+    rcpp_result_gen = Rcpp::wrap(loss_sums(D_lab, D_expr, V_p, V_i, eps));
+    return rcpp_result_gen;
+END_RCPP
+}
+// double_center
+NumericMatrix double_center(const NumericMatrix& x, const NumericVector& rmean, const NumericVector& cmean, const double gmean);
+RcppExport SEXP _DOST_double_center(SEXP xSEXP, SEXP rmeanSEXP, SEXP cmeanSEXP, SEXP gmeanSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type rmean(rmeanSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type cmean(cmeanSEXP);
+    Rcpp::traits::input_parameter< const double >::type gmean(gmeanSEXP);
+    rcpp_result_gen = Rcpp::wrap(double_center(x, rmean, cmean, gmean));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dist_row_min
+NumericVector dist_row_min(const NumericVector& d, const int n);
+RcppExport SEXP _DOST_dist_row_min(SEXP dSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type d(dSEXP);
+    Rcpp::traits::input_parameter< const int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(dist_row_min(d, n));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dist_adjacency
+List dist_adjacency(const NumericVector& d, const int n, const double threshold);
+RcppExport SEXP _DOST_dist_adjacency(SEXP dSEXP, SEXP nSEXP, SEXP thresholdSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type d(dSEXP);
+    Rcpp::traits::input_parameter< const int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< const double >::type threshold(thresholdSEXP);
+    rcpp_result_gen = Rcpp::wrap(dist_adjacency(d, n, threshold));
+    return rcpp_result_gen;
+END_RCPP
+}
+// knn_vote
+IntegerVector knn_vote(const NumericMatrix& D, const IntegerVector& codes, const int nlevels, const int k);
+RcppExport SEXP _DOST_knn_vote(SEXP DSEXP, SEXP codesSEXP, SEXP nlevelsSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type D(DSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type codes(codesSEXP);
+    Rcpp::traits::input_parameter< const int >::type nlevels(nlevelsSEXP);
+    Rcpp::traits::input_parameter< const int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(knn_vote(D, codes, nlevels, k));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_DOST_compute_grad", (DL_FUNC) &_DOST_compute_grad, 5},
+    {"_DOST_compute_grad", (DL_FUNC) &_DOST_compute_grad, 8},
+    {"_DOST_loss_sums", (DL_FUNC) &_DOST_loss_sums, 5},
+    {"_DOST_double_center", (DL_FUNC) &_DOST_double_center, 4},
+    {"_DOST_dist_row_min", (DL_FUNC) &_DOST_dist_row_min, 2},
+    {"_DOST_dist_adjacency", (DL_FUNC) &_DOST_dist_adjacency, 3},
+    {"_DOST_knn_vote", (DL_FUNC) &_DOST_knn_vote, 4},
     {NULL, NULL, 0}
 };
 

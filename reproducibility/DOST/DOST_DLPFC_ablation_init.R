@@ -55,10 +55,12 @@ coords <- Seurat::GetTissueCoordinates(sample, scale = 'hires')[1:2]
 N <- ncol(X)
 
 cat("Preprocessing data...\n")
-processed <- DOST:::preprocess(X, coords)
-X_ <- processed$X_
-D_expr <- processed$D_expr
-V <- processed$V
+# Same steps as DOST:::preprocess() with its defaults (HVG, nGenes = 3000,
+# neighborhood_threshold = 1), run here because the PCA initialization needs X_
+X_ <- DOST:::get_HVG(scuttle::normalizeCounts(X, log = TRUE), 3000)
+D_expr <- DOST:::compute_D(X_)
+D_expr <- sqrt(2 - 2 * exp(- D_expr^2 / (0.5 * mean(D_expr)^2)))
+V <- DOST:::build_adj_mat(coords, threshold_level = 1)
 
 init_random <- function(N, K, seed = 1999) {
   set.seed(seed)

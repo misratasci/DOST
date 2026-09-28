@@ -20,13 +20,7 @@ refine_labels <- function(coords, labels, k = 30) {
   if (k >= n) stop("k must be < number of rows in Z")
 
   D <- compute_D(coords)
-
-  new_labels <- character(n)
-  for (i in 1:n) {
-    ord <- order(D[i, ], decreasing = FALSE)
-    neigh <- ord[ord != i][1:k]
-    tab <- table(labels[neigh])
-    new_labels[i] <- names(which.max(tab))
-  }
-  return(new_labels)
+  f <- factor(labels)
+  best <- knn_vote(D, as.integer(f), nlevels(f), k)
+  return(levels(f)[best])
 }
