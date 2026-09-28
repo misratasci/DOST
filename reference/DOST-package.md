@@ -22,4 +22,6 @@ Useful links:
 
 Authors:
 
+- Mısra Taşçı <mtasci18@ku.edu.tr>
+
 - Mehmet Gönen <mehmetgonen@ku.edu.tr>
