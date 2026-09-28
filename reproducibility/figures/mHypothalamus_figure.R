@@ -117,7 +117,6 @@ dost_labels <- lapply(sheets, function(sheet) {
 # Section grid
 # ---------------------------------------------------------------------------
 
-#sheets <- c('-0.04','-0.19') for figure in main manuscript with two selected sheets
 annot_plots <- make_points_column(coords, gtlabels, gtlabels, sheets,
                                   "Ground Truth", size = dotsize,
                                   captions = paste0("Bregma ", sheets))
@@ -143,9 +142,8 @@ method_cols <- lapply(names(method_labels), function(method) {
 
 columns <- c(list(manual_annot_col), method_cols)
 grid <- wrap_plots(columns, ncol = length(columns))
-save_cropped(file.path(dir.figures, "mHypo_slices.pdf"), grid,
+save_cropped(file.path(dir.figures, "mHypo_allslices.pdf"), grid,
              width = 1.3 * length(columns), height = 7.5)
-# height = 3.0 for figure in main manuscript with 2 sheets
 
 # ---------------------------------------------------------------------------
 # ARI plots
@@ -165,4 +163,7 @@ rownames(aris) <- sheets
 
 violin_plot <- make_ari_violin(aris, show_mean = TRUE)
 save_cropped(file.path(dir.figures, "mHypo_violinplot.pdf"), violin_plot,
-             width = 6.5, height = 2.5)
+             width = 6, height = 3)
+
+print(aris, digits = 2)
+print(sort(colMeans(aris), decreasing = TRUE), digits = 2)

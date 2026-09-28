@@ -38,7 +38,7 @@ Run `install.R`. `pdfcrop` comes from TeX Live or MacTeX and is optional.
 | | `DLPFC_lambda_sensitivity.pdf` | ARI against lambda, faceted by slice |
 | `BC_figure.R` | `BC.pdf` | spatial row and UMAP row |
 | `mMAMP_figure.R` | `mMAMP.pdf` | spatial row and UMAP row |
-| `mHypothalamus_figure.R` | `mHypo_slices.pdf` | ground truth and all methods, five sections |
+| `mHypothalamus_figure.R` | `mHypo_allslices.pdf` | ground truth and all methods, five sections |
 | | `mHypo_violinplot.pdf` | ARI over the five sections |
 | `mHypothalamus_ablation_figure.R` | `mHypothalamus_ablation_<sheet>.pdf` | lambda sweep, for one chosen section |
 | `runtime_figure.R` | `DLPFC_runtime_violinplot.pdf` | mean runtime per slice, log scale |

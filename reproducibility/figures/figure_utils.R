@@ -202,7 +202,7 @@ make_ari_violin <- function(aris, show_mean = TRUE) {
   long <- reshape2::melt(aris, variable.name = "method", value.name = "ARI")
   p <- ggplot(long, aes(x = method, y = ARI, fill = method)) +
     geom_violin(trim = FALSE, color = "black", width = 0.8, alpha = 1, adjust = 1, scale = "width") +
-    ggbeeswarm::geom_beeswarm(cex = 1.0, size = 1.5, priority = "density",
+    ggbeeswarm::geom_beeswarm(cex = 1.0, size = 1, priority = "density",
                               alpha = 1, color = "black")
   if (show_mean) {
     p <- p + stat_summary(fun = mean, geom = "crossbar",
@@ -212,7 +212,8 @@ make_ari_violin <- function(aris, show_mean = TRUE) {
   p +
     guides(fill = "none", color = "none") +
     labs(y = "ARI", x = NULL) +
-    theme_classic()
+    theme_classic() +
+    theme(axis.text.x = element_text(angle = 30, hjust = 1))
 }
 
 save_cropped <- function(path, plot, width, height) {

@@ -96,10 +96,11 @@ violin_plot <- ggplot(summary_per_slice,
   scale_y_log10() +
   guides(fill = "none", color = "none") +
   labs(y = "Mean Runtime (s)", x = NULL) +
-  theme_classic()
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1))
 
 save_cropped(file.path(dir.figures, "DLPFC_runtime_violinplot.pdf"),
-             violin_plot, width = 6, height = 4)
+             violin_plot, width = 6, height = 3)
 
 # ---------------------------------------------------------------------------
 # Supplementary figure: per-slice bars with the spread over the repeats
@@ -143,7 +144,8 @@ print(summary_stats)
 
 # Slices as rows, methods as columns, "mean +/- sd" over the repeats
 runtime_table <- summary_per_slice %>%
-  mutate(val = paste0(round(mean_runtime, 2), " ± ", round(sd_runtime, 2))) %>%
+  mutate(val = paste0(format(mean_runtime, digits = 2, nsmall = 2), " ± ",
+                     format(sd_runtime, digits = 1, nsmall = 2))) %>%
   select(slice_id, method, val) %>%
   tidyr::pivot_wider(names_from = method, values_from = val)
 
@@ -151,6 +153,26 @@ write.csv(runtime_table, file.path(dir.figures, "runtime_detailed_table.csv"),
           row.names = FALSE)
 print(runtime_table)
 
-# LaTeX for the supplementary table
-print(knitr::kable(runtime_table, format = "latex", booktabs = TRUE,
-                   caption = "Runtime Details"))
+runtime_table[[1]] <- as.character(runtime_table[[1]])
+colnames(runtime_table)[1] <- "Slice ID"
+table1 <- runtime_table %>%
+  select("Slice ID", BASS, ADEPT, GraphST, stCluster, STAGATE)
+table2 <- runtime_table %>%
+  select("Slice ID", SpaGCN, BANKSY, DR.SC, DOST)
+t1 <- knitr::kable(table1, format = "latex", digits = 2, booktabs = TRUE,
+                   linesep = c("", "", "", "\\addlinespace")) %>%
+  kableExtra::row_spec(0, bold = TRUE)
+t2 <- knitr::kable(table2, format = "latex", digits = 2, booktabs = TRUE,
+                   linesep = c("", "", "", "\\addlinespace")) %>%
+  kableExtra::row_spec(0, bold = TRUE)
+
+# 3. Combine them into a single table environment with one caption
+print(
+  knitr::kables(
+    list(t1, t2),
+    format = "latex",
+    caption = "Runtime Details"
+  )
+)
+
+print(summary_stats)

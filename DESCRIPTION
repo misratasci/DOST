@@ -10,7 +10,6 @@ License: GPL (>= 3)
 Encoding: UTF-8
 SystemRequirements: HDF5 (>= 1.8.13)
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 biocViews: Software, Transcriptomics, Spatial, Clustering, GeneExpression
 LinkingTo: 
     Rcpp
@@ -35,4 +34,4 @@ BugReports: https://github.com/misratasci/DOST/issues
 VignetteBuilder: knitr
 Remotes: 
     xzhoulab/SPARK
-
+Config/roxygen2/version: 8.1.0

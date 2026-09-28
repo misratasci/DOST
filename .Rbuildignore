@@ -8,3 +8,6 @@
 ^pkgdown$
 ^LICENSE\.md$
 ^\.github$
+^output$
+^data$
+^reproducibility$

@@ -169,4 +169,7 @@ colnames(aris) <- sapply(method_columns, function(m) m[["title"]])
 
 violin_plot <- make_ari_violin(aris)
 save_cropped(file.path(dir.figures, "DLPFC_violinplot.pdf"),
-             violin_plot, width = 8, height = 4)
+             violin_plot, width = 6, height = 3)
+
+print(aris, digits = 3)
+print(colMeans(aris), digits = 3)

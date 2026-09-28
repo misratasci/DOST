@@ -21,6 +21,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Mısra Taşçı \email{mtasci18@ku.edu.tr}
   \item Mehmet Gönen \email{mehmetgonen@ku.edu.tr}
 }
 

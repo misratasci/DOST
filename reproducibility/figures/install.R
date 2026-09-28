@@ -3,6 +3,6 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocMana
 
 install.packages(c("ggplot2", "patchwork", "scales", "reshape2", "ggbeeswarm",
                    "dplyr", "tidyr", "knitr", "umap", "mclust", "readxl",
-                   "Seurat", "cowplot"))
+                   "Seurat", "cowplot", "kableExtra"))
 
 BiocManager::install("hdf5r")
