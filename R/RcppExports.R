@@ -3,6 +3,7 @@
 
 #' Compute Gradient (Internal C++ function)
 #'
+#'
 #' @param X Numeric Matrix (N x K embedding)
 #' @param D_x Numeric Matrix (pairwise distances of X)
 #' @param D_expr Numeric Matrix (expression distances)

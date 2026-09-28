@@ -7,6 +7,7 @@ DOST_DLPFC.R                        run DOST on DLPFC slices
 DOST_BC.R                           run DOST on the BC section
 DOST_mMAMP.R                        run DOST on the mMAMP (MA) section
 DOST_mHypothalamus.R                run DOST on the five mHypothalamus sections
+DOST_Xenium.R                       run DOST on the Xenium Human Breast test dataset
 DOST_runtime.R                      time the DOST call, 5 repeats per slice
 DOST_DLPFC_ablation_nGenes.R        sweep the number of HVGs and SVGs
 DOST_DLPFC_ablation_embdim.R        sweep the embedding dimension
@@ -43,6 +44,11 @@ mMAMP/MA/{spatial/, MA_filtered_feature_bc_matrix.h5, metadata.tsv,
 mHypothalamus/{MERFISH_Animal1_cnts.xlsx, MERFISH_Animal1_info.xlsx}
 ```
 
+The Xenium dataset was acquired from 10x Genomics:
+```
+curl -O https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_human_Breast_2fov/Xenium_V1_human_Breast_2fov_outs.zip
+```
+
 ## Environment
 
 Run `install.R` to install the packages the scripts need.
@@ -57,6 +63,7 @@ The defaults are tuned for 10x Visium. The non-Visium scripts override them:
 | BC | 20 | 1 | 0.03 | `FALSE` |
 | mMAMP | 20 | 1 | 0.03 | `FALSE` |
 | mHypothalamus | 10 | 3 | 0.2 | `FALSE` |
+| Xenium | 20 | 1 | 0.03 | `FALSE` |
 
 `DOST_DLPFC_ablation_init.R` is the one script that does not call `DOST()`:
 the exported function always initializes from classical MDS, so the script runs
@@ -79,6 +86,8 @@ the same pipeline through the package internals (`preprocess`, `optimize`,
 | | `mHypothalamus_DOST_celltype_sheet_<sheet>_labels.RData` | `labels`, the `lambda = 0` run |
 | | `mHypothalamus_DOST_celltype_sheet_<sheet>_embeddings.RData` | `emb` |
 | | `mHypothalamus_DOST_celltype_aris.RData` | `dost_celltype_aris` |
+| `DOST_Xenium.R` | `Xenium_DOST_labels.RData` | `labels` |
+| | `Xenium_DOST_embeddings.RData` | `emb`, the DOST embedding |
 | `DOST_runtime.R` | `DOST_runtime_slice<index>.txt` | one elapsed time per line, appended |
 | `DOST_DLPFC_ablation_nGenes.R` | `DOST_DLPFC_ablation_nGenes_HVG.RData` | `aris` (slices x gene counts), `ari_means` |
 | | `DOST_DLPFC_ablation_nGenes_SVG.RData` | the same, with SVG selection |

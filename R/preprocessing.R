@@ -45,6 +45,11 @@ preprocess <- function(X, coords, selected_genes = "HVG", nGenes = 3000, neighbo
   X <- scuttle::normalizeCounts(X, log = TRUE)
   #each cell (spot) is divided by the total read count of that cell, then log2 transform
 
+  if (nrow(X) < nGenes) {
+    cat("Warning: number of genes is less than nGenes. Using all genes.\n")
+    selected_genes <- "all"
+  }
+
   #get highly variable and spatially variable genes
   if (selected_genes == "HVG") {
     cat("Selecting HVGs\n")

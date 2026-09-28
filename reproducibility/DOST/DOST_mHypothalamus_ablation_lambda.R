@@ -35,7 +35,7 @@ dir.output <- "path/to/output/"
 lambdas <- seq(0, 0.2, by = 0.05)
 
 # Sections to run
-sheets <- c('-0.04', '-0.09', '-0.14', '-0.19', '-0.24')
+sheets <- c('-0.24')
 # ---------------------------------------------------------------------------
 
 filename <- file.path(dir.input, "MERFISH_Animal1_cnts.xlsx")

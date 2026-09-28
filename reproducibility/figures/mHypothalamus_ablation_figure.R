@@ -43,12 +43,23 @@ make_lambda_block <- function(results, coords, gtlabels, lambdas, sheet,
   gt_plot <- make_points_plot(coords, gtlabels,
                               title = "Ground Truth",
                               caption = paste0("Bregma ", sheet),
-                              size = 1, legend = FALSE, colors = colors)
+                              size = 0.1, legend = FALSE, colors = colors) +
+    theme(plot.margin = margin(0, 2, 0, 2, "pt"))
   gt_legend <- make_points_plot(coords, gtlabels,
                                 title = "Ground Truth",
                                 caption = paste0("Bregma ", sheet),
-                                size = 1, legend = TRUE,
-                                legend_ncol = legend_ncol, colors = colors)
+                                size = 1.5, legend = TRUE,
+                                legend_ncol = legend_ncol, colors = colors) +
+    theme(
+      legend.spacing.x = unit(0.03, "cm"),
+      legend.spacing.y = unit(0.03, "cm"),
+      legend.key.width = unit(0.15, "cm"),
+      legend.key.height = unit(0.15, "cm"),
+      legend.text = element_text(
+        margin = margin(l = 1, r = 1, unit = "pt")
+      ),
+      plot.margin = margin(-4, 2, 0, 2, "pt")
+    )
   gt_legend <- wrap_elements(cowplot::get_legend(gt_legend))
 
   spatial_plots <- list()
@@ -61,16 +72,20 @@ make_lambda_block <- function(results, coords, gtlabels, lambdas, sheet,
       coords, labels,
       title = paste0("Lambda = ", lambda),
       caption = paste0("ARI=", formatC(ari, digits = 2, format = "f")),
-      size = 1, colors = colors)
-    umap_plots[[key]] <- make_umap_plot(results[[key]]$Z, gtlabels, title = "",
-                                        trim_quant = 0.01, colors = colors)
+      size = 0.1, colors = colors)
+    umap_plots[[key]] <- make_umap_plot(results[[key]]$Z, gtlabels, title = element_blank(),
+                                        trim_quant = 0.01, colors = colors, size = 0.1) +
+      theme(
+        plot.margin = margin(-4, 2, 0, 2, "pt"),
+        plot.title = element_text(margin = margin(b = 0, unit = "pt"))
+      )
   }
   if (legend_spacer) gt_legend <- gt_legend / plot_spacer()
   spatial_row <- (gt_plot | wrap_plots(spatial_plots, ncol = length(lambdas))) +
     plot_layout(widths = c(0.2, 1))
   umap_row <- (gt_legend | wrap_plots(umap_plots, ncol = length(lambdas))) +
     plot_layout(widths = c(0.2, 1))
-  spatial_row / umap_row
+  spatial_row / umap_row + plot_layout(heights = c(1, 1))
 }
 
 cell_file <- file.path(dir.output,
@@ -103,5 +118,6 @@ row2 <- (title_domain | domain_block) + plot_layout(widths = c(0.02, 0.98))
 
 save_cropped(file.path(dir.figures,
                        paste0("mHypothalamus_ablation_", sheet, ".pdf")),
-             row1 / row2,
-             width = 2.4 * (length(lambdas) + 1), height = 12)
+             row1 / row2 + plot_layout(heights = c(1, 1)),
+             width = 1.8 * (length(lambdas) + 1), height = 8)
+

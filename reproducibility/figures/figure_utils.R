@@ -116,7 +116,7 @@ make_spatial_column <- function(samples, title, column, gt_column,
 }
 
 make_umap_plot <- function(emb, gtlabels, title, legend = FALSE,
-                           trim_quant = 0, colors = c(0, 360)) {
+                           trim_quant = 0, colors = c(0, 360), size = 0.6) {
   sample.umap <- umap::umap(emb)
   layout <- as.data.frame(sample.umap$layout)
   colnames(layout) <- c("x", "y")
@@ -137,7 +137,7 @@ make_umap_plot <- function(emb, gtlabels, title, legend = FALSE,
   cols <- hue_pal(h = colors)(length(layer_levels))
 
   p <- ggplot(df, aes(x = x, y = y, color = layer_num)) +
-    geom_point(size = 0.6) +
+    geom_point(size = size) +
     scale_color_manual(values = cols, labels = layer_levels) +
     scale_x_continuous(expand = expansion(mult = 0.05)) +
     scale_y_continuous(expand = expansion(mult = 0.05)) +
