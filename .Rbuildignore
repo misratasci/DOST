@@ -11,3 +11,7 @@
 ^output$
 ^data$
 ^reproducibility$
+^src/.*\.o$
+^src/.*\.so$
+^src/.*\.dll$
+^\.claude$

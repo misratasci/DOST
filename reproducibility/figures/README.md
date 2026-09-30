@@ -10,6 +10,7 @@ into panels.
 DLPFC_figure.R                  slice grid and ARI violin, DLPFC12
 DLPFC_ablation_figure.R         gene count, embedding dim, init, max iter, lambda
 BC_figure.R                     spatial and UMAP rows, BC section1
+BC_ablation_figure.R            lambda sensitivity, BC section1
 mMAMP_figure.R                  spatial and UMAP rows, mMAMP MA
 mHypothalamus_figure.R          section grid and ARI plots, mHypothalamus
 mHypothalamus_ablation_figure.R lambda sweep, cell types against domains
@@ -37,6 +38,8 @@ Run `install.R`. `pdfcrop` comes from TeX Live or MacTeX and is optional.
 | | `DLPFC_ablation_lambda_<index>.pdf` | clustering and UMAP per lambda |
 | | `DLPFC_lambda_sensitivity.pdf` | ARI against lambda, faceted by slice |
 | `BC_figure.R` | `BC.pdf` | spatial row and UMAP row |
+| `BC_ablation_figure.R` | `BC_lambda_sensitivity.pdf` | ARI against lambda |
+| | `BC_lambda_panel.pdf` | clustering and UMAP per lambda |
 | `mMAMP_figure.R` | `mMAMP.pdf` | spatial row and UMAP row |
 | `mHypothalamus_figure.R` | `mHypo_allslices.pdf` | ground truth and all methods, five sections |
 | | `mHypo_violinplot.pdf` | ARI over the five sections |

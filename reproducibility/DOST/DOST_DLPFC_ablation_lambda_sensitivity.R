@@ -23,7 +23,7 @@ dir.input <- "path/to/data/DLPFC12"
 dir.output <- "path/to/output"
 
 # Lambda grid to sweep
-lambdas <- seq(0, 1, by = 0.1)
+lambdas <- seq(0, 0.1, by = 0.01)
 
 # Slice indices to run (1 to 12)
 slice_indices <- 1:12

@@ -14,7 +14,8 @@ DOST_DLPFC_ablation_embdim.R        sweep the embedding dimension
 DOST_DLPFC_ablation_init.R          compare random, PCA and MDS initialization
 DOST_DLPFC_ablation_max_iter.R      sweep the number of maximum iterations
 DOST_DLPFC_ablation_lambda.R        sweep lambda near the default
-DOST_DLPFC_ablation_lambda_sensitivity.R  sweep lambda over 0-1
+DOST_DLPFC_ablation_lambda_sensitivity.R  sweep lambda over 0-0.1
+DOST_BC_ablation_lambda_sensitivity.R  sweep lambda over 0-0.1 on BC
 DOST_mHypothalamus_ablation_lambda.R  sweep lambda, for cell types and domains
 load_data.R                         the three Visium dataset loaders
 install.R                           installs the R packages the scripts need
@@ -97,5 +98,6 @@ the same pipeline through the package internals (`preprocess`, `optimize`,
 | `DOST_DLPFC_ablation_lambda.R` | `DOST_DLPFC_ablation_lambda_<index>.RData` | `results` keyed by lambda |
 | `DOST_DLPFC_ablation_lambda_sensitivity.R` | `DOST_DLPFC<index>_lambda_noref.RData` | `results` keyed by lambda, `aris` |
 | | `DOST_DLPFC<index>_lambda_ref.RData` | the same, labels refined |
+| `DOST_BC_ablation_lambda_sensitivity.R` | `DOST_BC_lambda_sensitivity.RData` | `results` keyed by lambda, `aris` |
 | `DOST_mHypothalamus_ablation_lambda.R` | `mHypothalamus_DOST_ablation_cell_type_sheet_<sheet>.RData` | `results` keyed by lambda, `aris` |
 | | `mHypothalamus_DOST_ablation_spatial_domain_sheet_<sheet>.RData` | the same, for domains |
