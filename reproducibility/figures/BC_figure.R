@@ -100,29 +100,40 @@ dost_emb <- load_object(file.path(dir.output, "BC_DOST_embeddings.RData"), "emb"
 # Figure
 # ---------------------------------------------------------------------------
 
+cols <- DiscretePalette(length(unique(gt)), palette = "glasbey")
+
 spatial_row <- list(
   make_spatial_plot(sample, "Ground Truth", "fine_annot_type", "fine_annot_type",
-                    show_ari = FALSE),
-  make_spatial_plot(sample, "BASS",      "bass",      "fine_annot_type"),
-  make_spatial_plot(sample, "ADEPT",     "adept",     "fine_annot_type"),
-  make_spatial_plot(sample, "GraphST",   "graphst",   "fine_annot_type"),
-  make_spatial_plot(sample, "stCluster", "stcluster", "fine_annot_type"),
-  make_spatial_plot(sample, "STAGATE",   "stagate",   "fine_annot_type"),
-  make_spatial_plot(sample, "SpaGCN",    "spagcn",    "fine_annot_type"),
-  make_spatial_plot(sample, "BANKSY",    "banksy",    "fine_annot_type"),
-  make_spatial_plot(sample, "DR.SC",     "drsc",      "fine_annot_type"),
-  make_spatial_plot(sample, "DOST",      "dost",      "fine_annot_type")
+                    show_ari = FALSE, cols = cols),
+  make_spatial_plot(sample, "BASS",      "bass",      "fine_annot_type",
+                    cols = cols),
+  make_spatial_plot(sample, "ADEPT",     "adept",     "fine_annot_type",
+                    cols = cols),
+  make_spatial_plot(sample, "GraphST",   "graphst",   "fine_annot_type",
+                    cols = cols),
+  make_spatial_plot(sample, "stCluster", "stcluster", "fine_annot_type",
+                    cols = cols),
+  make_spatial_plot(sample, "STAGATE",   "stagate",   "fine_annot_type",
+                    cols = cols),
+  make_spatial_plot(sample, "SpaGCN",    "spagcn",    "fine_annot_type",
+                    cols = cols),
+  make_spatial_plot(sample, "BANKSY",    "banksy",    "fine_annot_type",
+                    cols = cols),
+  make_spatial_plot(sample, "DR.SC",     "drsc",      "fine_annot_type",
+                    cols = cols),
+  make_spatial_plot(sample, "DOST",      "dost",      "fine_annot_type",
+                    cols = cols)
 )
 
 umap_row <- list(
-  make_umap_plot(adept_emb,     gt, "ADEPT"),
-  make_umap_plot(graphst_emb,   gt, "GraphST"),
-  make_umap_plot(stcluster_emb, gt, "stCluster"),
-  make_umap_plot(stagate_emb,   gt, "STAGATE"),
-  make_umap_plot(spagcn_emb,    gt, "SpaGCN"),
-  make_umap_plot(banksy_emb,    gt, "BANKSY"),
-  make_umap_plot(drsc_emb,      gt, "DR.SC"),
-  make_umap_plot(dost_emb,      gt, "DOST")
+  make_umap_plot(adept_emb,     gt, "ADEPT", cols = cols),
+  make_umap_plot(graphst_emb,   gt, "GraphST", cols = cols),
+  make_umap_plot(stcluster_emb, gt, "stCluster", cols = cols),
+  make_umap_plot(stagate_emb,   gt, "STAGATE", cols = cols),
+  make_umap_plot(spagcn_emb,    gt, "SpaGCN", cols = cols),
+  make_umap_plot(banksy_emb,    gt, "BANKSY", cols = cols),
+  make_umap_plot(drsc_emb,      gt, "DR.SC", cols = cols),
+  make_umap_plot(dost_emb,      gt, "DOST", cols = cols)
 )
 
 n_col <- length(spatial_row)

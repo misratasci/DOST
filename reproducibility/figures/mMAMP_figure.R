@@ -56,7 +56,7 @@ gt <- sample@meta.data$ground_truth
 
 # BASS: zlabels is a list with one entry per section, here always one
 zlabels <- load_object(file.path(dir.output, "mMAMP_BASS_labels.RData"), "zlabels")
-sample@meta.data$bass <- zlabels
+sample@meta.data$bass <- zlabels[[1]]
 
 # ADEPT writes labels only, in the order its loader read the spots
 sample@meta.data$adept <- as.factor(read_labels_txt(file.path(dir.output, "mMAMP_adept.txt")))
