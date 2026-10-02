@@ -1,6 +1,6 @@
 Package: DOST
 Title: Distance-preserving Optimization for Spatial Transcriptomics
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: c(
     person("Mısra", "Taşçı", , "mtasci18@ku.edu.tr", role = c("aut", "cre")),
     person("Mehmet", "Gönen", , "mehmetgonen@ku.edu.tr", role = c("aut"))
@@ -23,7 +23,8 @@ Imports:
     scuttle,
     stats,
     utils,
-    uwot
+    uwot,
+    Matrix
 Suggests: 
     knitr,
     rmarkdown,

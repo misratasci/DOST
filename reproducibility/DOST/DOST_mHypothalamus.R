@@ -28,7 +28,7 @@ library(DOST)
 dir.input <- "path/to/data/mHypothalamus"
 
 # Change this path to where you want to save the results
-dir.output <- "path/to/output/"
+dir.output <- "path/to/output"
 # ---------------------------------------------------------------------------
 
 filename <- file.path(dir.input, "MERFISH_Animal1_cnts.xlsx")

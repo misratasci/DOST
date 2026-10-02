@@ -15,3 +15,5 @@
 ^src/.*\.so$
 ^src/.*\.dll$
 ^\.claude$
+^figures$
+^tutorials$

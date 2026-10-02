@@ -33,7 +33,7 @@ get_SVG <- function(X, coords, nSVG = 3000) {
 # list(p = column pointers, i = row indices, n = N, sum = number of ones)
 build_adj_mat <- function(coords, threshold_level = 1) {
   N <- nrow(coords)
-  d <- dist(coords, method = "euclidean")
+  d <- stats::dist(coords, method = "euclidean")
   r1 <- dist_row_min(d, N)
   threshold_level <- 1.5 * median(r1) * threshold_level
   V <- dist_adjacency(d, N, threshold_level)
