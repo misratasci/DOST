@@ -14,9 +14,12 @@ Outputs written to dir.output:
 """
 
 import os
+import sys
 import time
 import warnings
 from argparse import Namespace
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "ADEPT_src"))
 
 import GAAE
 from GAAE.utils import DE_num_calc, filter_num_calc, impute, initialize

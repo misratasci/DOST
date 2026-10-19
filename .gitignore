@@ -11,3 +11,8 @@ docs
 /output/
 /figures/
 /data/
+# upstream clones of third-party code, see THIRD_PARTY_NOTICES.md
+/reproducibility/GraphST/GraphST_src/
+/reproducibility/ADEPT/ADEPT_src/
+__pycache__/
+*.pyc

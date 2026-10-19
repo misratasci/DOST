@@ -18,10 +18,13 @@ Outputs written to dir.output:
 """
 
 import os
+import sys
 import warnings
 from argparse import Namespace
 
 import numpy as np
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "ADEPT_src"))
 
 import GAAE
 from GAAE.utils import DE_num_calc, filter_num_calc, impute, initialize

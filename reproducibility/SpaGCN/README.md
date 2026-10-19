@@ -75,3 +75,7 @@ AnnData it stores `z` as `adata.obsm['X_spagcn']` and returns `(y_pred, prob, ad
 called with no argument it behaves exactly as before and returns `(y_pred, prob)`. The
 argument has to stay optional, because `util.search_res` calls `clf.predict()` with no
 arguments while searching for the resolution, so both call sites must keep working.
+
+## License
+
+`SpaGCN/` is MIT-licensed (`SpaGCN/LICENSE`) and `st_loading_utils.py` comes from BenchmarkST, also MIT (`../licenses/BenchmarkST_LICENSE.txt`). See also `THIRD_PARTY_NOTICES.md` in the repository root.

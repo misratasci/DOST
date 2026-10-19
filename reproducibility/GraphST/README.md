@@ -17,9 +17,23 @@ GraphST_mMAMP.py            run GraphST on the mMAMP (MA) section
 GraphST_mHypothalamus.py    run GraphST on one mHypothalamus section
 GraphST_runtime.py          time the full DLPFC pipeline, 5 repeats per slice
 st_loading_utils.py         dataset loaders of BenchmarkST, unmodified
-GraphST/                    the GraphST package, unmodified from the original repository
+GraphST_src/                not included: clone of the original repository (see Setup)
 environment.yml             conda environment
 ```
+
+## Setup
+
+GraphST is licensed under AGPL-3.0, so its code is not redistributed here. Clone the
+original repository next to the scripts, at the commit we used:
+
+```
+cd reproducibility/GraphST
+git clone https://github.com/JinmiaoChenLab/GraphST GraphST_src
+git -C GraphST_src checkout d62b0b7b6cd38ee285f3ac8cd67b7341a10bcc74
+```
+
+The scripts add `GraphST_src/` to `sys.path` and import the package from there, with no
+modifications to it.
 
 ## Data
 
@@ -60,3 +74,7 @@ conda activate graphst
 
 `GraphST_runtime.py` writes only `graphst_runtime_<slice>.txt`, one wall-clock time in
 seconds per line, appended across repeats.
+
+## License
+
+GraphST is AGPL-3.0 and is not redistributed here. `st_loading_utils.py` comes from BenchmarkST (MIT, `../licenses/BenchmarkST_LICENSE.txt`). See also `THIRD_PARTY_NOTICES.md` in the repository root.

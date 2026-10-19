@@ -61,3 +61,7 @@ conda activate stcluster
 | `stCluster_BC.py` | `stcluster_bc_section1.csv` | `stcluster_embeddings_bc_section1.csv` | `stcluster_aris_bc.txt` |
 | `stCluster_mMAMP.py` | `stcluster_mmamp_MA.csv` | `stcluster_embeddings_mmamp_MA.csv` | `stcluster_aris_mmamp.txt` |
 | `stCluster_mHypothalamus.py` | `stcluster_mhypo_<section>.csv` | `stcluster_embeddings_mhypo_<section>.csv` | `stcluster_aris_mhypo.txt` |
+
+## License
+
+`stCluster/` is MIT-licensed (`stCluster/LICENSE`) and `st_loading_utils.py` is adapted from BenchmarkST, also MIT (`../licenses/BenchmarkST_LICENSE.txt`). See also `THIRD_PARTY_NOTICES.md` in the repository root.

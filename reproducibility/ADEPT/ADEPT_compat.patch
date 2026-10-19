@@ -1,0 +1,47 @@
+--- a/GAAE/Train_ADEPT_modified.py
++++ b/GAAE/Train_ADEPT_modified.py
+@@ -45,7 +45,8 @@
+         dif_gene_array[i, 0], dif_gene_array[i, 1], dif_gene_array[i, 2] = p_val_finder(test_array, ctrl_array, i)
+ 
+     tot_df = pd.DataFrame([dif_gene_list, dif_gene_array[:, 0], dif_gene_array[:, 1], dif_gene_array[:, 2]]).transpose()
+-    tot_df = tot_df.set_axis(['Gene', 'p-val', '-log10(p-val)', 'cur'], axis=1, inplace=False)
++    #tot_df = tot_df.set_axis(['Gene', 'p-val', '-log10(p-val)', 'cur'], axis=1, inplace=False)
++    tot_df.columns = ['Gene', 'p-val', '-log10(p-val)', 'cur']
+ 
+     sorted_df = tot_df.sort_values(by=['cur', '-log10(p-val)'], ascending=False)
+ 
+@@ -289,7 +290,9 @@
+         adata_gt_new_control = adata[keep_bcs_control].copy()
+         ctrl_array = adata_gt_new_control.X.toarray().T
+ 
+-        gene_list = adata.var.index[:, np.newaxis]
++        #gene_list = adata.var.index[:, np.newaxis]
++        gene_list = adata.var_names.to_numpy().reshape(-1, 1)
++
+         # print(test_array.shape, ctrl_array.shape)
+         # print(gene_list)
+         print("label = ", i_+1)
+@@ -505,7 +508,8 @@
+         adata_gt_new_control = adata[keep_bcs_control].copy()
+         ctrl_array = adata_gt_new_control.X.toarray().T
+ 
+-        gene_list = adata.var.index[:, np.newaxis]
++        #gene_list = adata.var.index[:, np.newaxis]
++        gene_list = adata.var_names.to_numpy().reshape(-1, 1)
+         print(test_array.shape, ctrl_array.shape)
+         # print(gene_list)
+         print("label = ", i_+1)
+--- a/GAAE/utils.py
++++ b/GAAE/utils.py
+@@ -221,8 +221,10 @@
+     # input_dir = os.path.join(args_.data_dir, args_.input_data)
+     data_name = args_.input_data
+     data_path = args_.data_dir
+-    if data_name in ['151507', '151508', '151509', '151510', '151669', '151670', '151671', '151672', '151673', '151674', '151675', '151676', 'MA', 'section1']:
++    if data_name in ['151507', '151508', '151509', '151510', '151669', '151670', '151671', '151672', '151673', '151674', '151675', '151676', 'section1']:
+         adata = load_DLPFC(root_dir=data_path, section_id=data_name)
++    elif data_name in ['MA']:
++        adata = load_mMAMP(root_dir=data_path, section_id=data_name)
+     elif data_name in ['STARmap_20180505_BY3_1k.h5ad']:
+         adata = load_mVC(root_dir=data_path, section_id=data_name)
+     elif data_name in ['20180417_BZ5_control', '20180419_BZ9_control', '20180424_BZ14_control']:

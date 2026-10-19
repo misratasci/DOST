@@ -20,12 +20,15 @@ Outputs written to dir_output:
 """
 
 import os
+import sys
 import warnings
 
 import numpy as np
 import pandas as pd
 import torch
 from sklearn import metrics
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "GraphST_src"))
 
 from GraphST import GraphST
 from GraphST.utils import clustering

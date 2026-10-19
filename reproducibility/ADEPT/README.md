@@ -15,9 +15,27 @@ ADEPT_BC.py              run ADEPT on the BC section
 ADEPT_mMAMP.py           run ADEPT on the mMAMP (MA) section
 ADEPT_mHypothalamus.py   run ADEPT on one mHypothalamus section
 ADEPT_runtime.py         time the full DLPFC pipeline, 5 repeats per slice
-GAAE/                    the ADEPT package, unmodified from the original repository
+ADEPT_compat.patch       our small compatibility patch for the original code (see Setup)
+ADEPT_src/               not included: clone of the original repository (see Setup)
 environment.yml          conda environment
 ```
+
+## Setup
+
+The ADEPT repository has no license, so its code is not redistributed here. Clone the
+original repository next to the scripts at the commit we used, then apply our patch:
+
+```
+cd reproducibility/ADEPT
+git clone https://github.com/maiziezhoulab/ADEPT ADEPT_src
+git -C ADEPT_src checkout 149c3e964dd392787c4c9710a7137a1e69d0419f
+git -C ADEPT_src apply ../ADEPT_compat.patch
+```
+
+The patch changes two things in `GAAE/`: it replaces a `set_axis(..., inplace=False)` call
+and a `var.index[:, np.newaxis]` indexing that recent pandas versions reject, and it routes
+the `MA` section to the `load_mMAMP` loader. The scripts add `ADEPT_src/` to `sys.path` and
+import `GAAE` from there.
 
 ## Data
 
@@ -58,3 +76,7 @@ conda activate adept
 
 `ADEPT_runtime.py` writes only `adept_runtime_<slice>.txt`, one wall-clock time in
 seconds per line, appended across repeats.
+
+## License
+
+ADEPT has no declared license and is not redistributed here; `ADEPT_compat.patch` is our own change to it. See also `THIRD_PARTY_NOTICES.md` in the repository root.

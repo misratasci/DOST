@@ -14,10 +14,13 @@ Outputs written to dir_output:
 """
 
 import os
+import sys
 import time
 import warnings
 
 import torch
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "GraphST_src"))
 
 from GraphST import GraphST
 from GraphST.utils import clustering

@@ -60,3 +60,7 @@ conda activate stagate
 
 `STAGATE_runtime.py` writes only `stagate_runtime_<slice>.txt`, one wall-clock time in
 seconds per line, appended across repeats.
+
+## License
+
+`STAGATE_pyG/` is MIT-licensed (`STAGATE_pyG/LICENSE`) and `st_loading_utils.py` comes from BenchmarkST, also MIT (`../licenses/BenchmarkST_LICENSE.txt`). See also `THIRD_PARTY_NOTICES.md` in the repository root.
