@@ -1,8 +1,6 @@
 
 # DOST: Distance-preserving Optimization for Spatial Transcriptomics
 
-[![DOI](https://zenodo.org/badge/1122327206.svg)](https://doi.org/10.5281/zenodo.23477260)
-
 **DOST** is an R package for identifying spatial domains in spatial
 transcriptomics (ST) data. It is a distance-preserving optimization
 based method that clusters ST spots into spatial domains. DOST embeds ST
