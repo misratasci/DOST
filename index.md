@@ -25,6 +25,24 @@ For a full reproduction of the spatial domain identification of the
 DLPFC dataset from our paper, please see the [DLPFC
 Vignette](https://misratasci.github.io/DOST/articles/DLPFC.html).
 
+Tutorials for the BC, DLPFC, mHypothalamus, mMAMP and mPFC datasets are
+in [`tutorials/`](https://misratasci.github.io/DOST/tutorials/). The
+scripts that reproduce every result and figure of the paper, including
+the baseline methods, are in
+[`reproducibility/`](https://misratasci.github.io/DOST/reproducibility/).
+
+## Citation
+
+If you use DOST, please cite it as in
+[`CITATION.cff`](https://misratasci.github.io/DOST/CITATION.cff).
+
+## License
+
+DOST is released under the GPL-3 license (see
+[`LICENSE.md`](https://misratasci.github.io/DOST/LICENSE.md)).
+Third-party code in `reproducibility/` keeps its original license; see
+[`THIRD_PARTY_NOTICES.md`](https://misratasci.github.io/DOST/THIRD_PARTY_NOTICES.md).
+
 ## Contact
 
 For any questions: - Mısra Taşçı: <mtasci18@ku.edu.tr> - Mehmet Gönen:
