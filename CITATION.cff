@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "DOST: Distance-preserving Optimization for Spatial Transcriptomics"
+version: 1.0.0
+date-released: 2026-10-19
+license: GPL-3.0-or-later
+repository-code: "https://github.com/misratasci/DOST"
+url: "https://misratasci.github.io/DOST/"
+authors:
+  - family-names: Taşçı
+    given-names: Mısra
+    email: mtasci18@ku.edu.tr
+  - family-names: Gönen
+    given-names: Mehmet
+    email: mehmetgonen@ku.edu.tr
+keywords: [spatial transcriptomics, spatial domain identification, clustering, Sammon mapping, R package]
