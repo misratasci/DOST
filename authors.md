@@ -9,7 +9,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/misratasci/DOST/blob/master/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/misratasci/DOST/blob/main/DESCRIPTION)
 
 Taşçı M, Gönen M (2026). *DOST: Distance-preserving Optimization for
 Spatial Transcriptomics*. R package version 1.0.0,
